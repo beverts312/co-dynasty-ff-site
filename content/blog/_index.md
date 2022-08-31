@@ -1,9 +1,7 @@
 ---
-title: "Posts"
-linkTitle: "Posts"
+title: Posts
+linkTitle: Posts
 menu:
   main:
-    weight: 30
+    weight: 20
 ---
-
-Good Stuff
