@@ -9,7 +9,7 @@ menu:
 General Rules
 1. Buy In= $125
 2. Yearly Commitment = 5 Years (Currently Year 2 of 5)
-3. Join and Be Active on Slack Channel (https://coloradodynasty.slack.com)
+3. Join and Be Active on [Slack Channel](https://coloradodynasty.slack.com)
 4. Sleeper App is the website/app to review for League Settings, Scoring, etc (https://sleeper.app/leagues/644982855247671296)
 Other Rules
 5. No locking rosters for Pickup/Dropoffs of teams that didn't make the playoffs.
