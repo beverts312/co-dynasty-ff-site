@@ -1,0 +1,101 @@
+baseURL = "/"
+title = "Dynasty Fantasy Football"
+
+enableRobotsTXT = true
+
+theme = ["docsy"]
+
+enableGitInfo = true
+
+contentDir = "content"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableMissingTranslationPlaceholders = true
+
+# Comment out to enable taxonomies in Docsy
+# disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params.taxonomy]
+taxonomyCloud = ["tags", "categories"] 
+taxonomyCloudTitle = ["Tag Cloud", "Categories"] 
+taxonomyPageHeader = ["tags", "categories"] 
+
+
+# Highlighting config
+pygmentsCodeFences = true
+pygmentsUseClasses = false
+pygmentsUseClassic = false
+pygmentsStyle = "tango"
+
+[permalinks]
+blog = "/:section/:year/:month/:day/:slug/"
+
+[blackfriday]
+plainIDAnchors = true
+hrefTargetBlank = true
+angledQuotes = false
+latexDashes = true
+
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
+
+[services]
+[services.googleAnalytics]
+# id = "UA-00000000-0"
+
+[languages]
+[languages.en]
+title = "Bailey's Site"
+description = ""
+languageName ="English"
+# Weight used for sorting.
+weight = 1
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+      style = "tango"
+
+[outputs]
+section = ["HTML", "print", "RSS"]
+
+[params]
+copyright = "Bailey Everts"
+# privacy_policy = "https://policies.google.com/privacy"
+
+gcs_engine_id = "d72aa9b2712488cc3"
+
+algolia_docsearch = false
+offlineSearch = false
+prism_syntax_highlighting = false
+
+[params.ui]
+breadcrumb_disable = false
+footer_about_disable = false
+navbar_logo = false
+navbar_translucent_over_cover_disable = false
+sidebar_menu_compact = false
+sidebar_search_disable = false
+
+[params.ui.feedback]
+enable = false
+yes = 'Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+
+[params.ui.readingtime]
+enable = false
+
+[params.links]
+[[params.links.sleeper]]
+	name = "Sleeper"
+	url = "https://sleeper.com/leagues/784594558804697088"
+	icon = "fa-solid fa-football"
+	desc = "League on Sleeper"

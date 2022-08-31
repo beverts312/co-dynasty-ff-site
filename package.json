@@ -1,0 +1,14 @@
+{
+  "name": "dynasty-site",
+  "version": "1.0.0",
+  "description": "Dynasty Site",
+  "scripts": {
+    "build": "hugo --minify",
+    "start": "hugo server"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.0",
+    "postcss": "8.4.5",
+    "postcss-cli": "9.1.0"
+  }
+}
