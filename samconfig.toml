@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "ff-site"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1uxzopm8jvt3h"
+s3_prefix = "ff-site"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "HostedZone=\"Z0568050VWX52K79AJQD\" SiteUrl=\"dynasty.farts.guru\" BucketName=\"co-dynasty-ff-site-083122\""
+image_repositories = []

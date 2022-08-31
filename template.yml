@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: FF Site UI
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: Template for UI resources
+    Author: Starlord
+    SemanticVersion: 0.0.1
+
+Parameters:
+  HostedZone:
+    Type: String
+    Default: Z37GLWNRFQIEJR
+  SiteUrl:
+    Type: String
+    Default: dynasty.farts.guru
+  BucketName:
+    Type: String
+    Default: co-dynasty-ff-site-083122
+
+Resources:
+  UICertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref SiteUrl
+      ValidationMethod: DNS
+
+  UIStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      Parameters:
+        BucketName: !Ref BucketName
+        DomainName: !Ref SiteUrl
+        CertificateArn: !Ref UICertificate
+      TemplateURL: https://beverts-templates.s3.us-west-2.amazonaws.com/s3-cloudfront.yml
