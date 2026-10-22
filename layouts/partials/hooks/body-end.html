@@ -1,0 +1,62 @@
+<script>
+(function () {
+  var SELECTOR = ".td-content table";
+  var css =
+    "th.sortable{cursor:pointer;user-select:none;white-space:nowrap}" +
+    "th.sortable::after{content:'\\2195';opacity:.35;margin-left:.4em}" +
+    "th.sortable[data-dir='asc']::after{content:'\\25B2';opacity:1;font-size:.8em}" +
+    "th.sortable[data-dir='desc']::after{content:'\\25BC';opacity:1;font-size:.8em}" +
+    "th.sortable:focus-visible{outline:2px solid currentColor;outline-offset:2px}";
+  var style = document.createElement("style");
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  // Records sort by win percentage, money and numbers by value, everything else by text.
+  function value(cell) {
+    var t = cell.textContent.trim();
+    var rec = t.match(/^(\d+)-(\d+)$/);
+    if (rec) { var w = +rec[1], l = +rec[2]; return w + l ? w / (w + l) : 0; }
+    var n = t.replace(/[$,]/g, "");
+    if (n !== "" && !isNaN(n)) return parseFloat(n);
+    return t.toLowerCase();
+  }
+  function compare(a, b) {
+    if (typeof a === "number" && typeof b === "number") return a - b;
+    return String(a).localeCompare(String(b));
+  }
+
+  document.querySelectorAll(SELECTOR).forEach(function (table) {
+    var head = table.tHead && table.tHead.rows[0];
+    var body = table.tBodies[0];
+    if (!head || !body) return;
+    Array.prototype.forEach.call(head.cells, function (th, col) {
+      var label = th.textContent.trim();
+      var textFirst = label === "Rank" || label === "Team";
+      th.classList.add("sortable");
+      th.tabIndex = 0;
+      th.setAttribute("role", "button");
+      function sort() {
+        var dir = th.getAttribute("data-dir")
+          ? (th.getAttribute("data-dir") === "asc" ? "desc" : "asc")
+          : (textFirst ? "asc" : "desc");
+        Array.prototype.forEach.call(head.cells, function (h) { h.removeAttribute("data-dir"); h.removeAttribute("aria-sort"); });
+        th.setAttribute("data-dir", dir);
+        th.setAttribute("aria-sort", dir === "asc" ? "ascending" : "descending");
+        var rows = Array.prototype.slice.call(body.rows).map(function (r, i) {
+          return { r: r, i: i, v: value(r.cells[col]) };
+        });
+        rows.sort(function (x, y) {
+          var c = compare(x.v, y.v);
+          if (dir === "desc") c = -c;
+          return c || x.i - y.i;
+        });
+        rows.forEach(function (o) { body.appendChild(o.r); });
+      }
+      th.addEventListener("click", sort);
+      th.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sort(); }
+      });
+    });
+  });
+})();
+</script>
