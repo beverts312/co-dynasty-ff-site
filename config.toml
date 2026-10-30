@@ -96,6 +96,6 @@ enable = false
 [params.links]
 [[params.links.sleeper]]
 	name = "Sleeper"
-	url = "https://sleeper.com/leagues/784594558804697088"
+	url = "https://sleeper.com/leagues/1312151922802688000"
 	icon = "fa-solid fa-football"
 	desc = "League on Sleeper"
